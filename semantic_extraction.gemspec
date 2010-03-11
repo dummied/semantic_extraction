@@ -22,7 +22,11 @@ Gem::Specification.new do |s|
      "LICENSE",
      "README.rdoc",
      "Rakefile",
+     "VERSION",
      "lib/semantic_extraction.rb",
+     "lib/semantic_extraction/extractors/alchemy.rb",
+     "lib/semantic_extraction/extractors/yahoo.rb",
+     "semantic_extraction.gemspec",
      "test/helper.rb",
      "test/test_semantic_extraction.rb"
   ]
