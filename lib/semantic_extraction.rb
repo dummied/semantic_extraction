@@ -5,13 +5,9 @@ require 'ostruct'
 
 module SemanticExtraction
   
-  # We'll automatically require any extractors in the ./semantic_extraction/extractors directory.
-  # And, yes, I know there has to be a better way to handle this. Let me know before I get fed up and Google furiously.  
-  Dir.entries("./semantic_extraction/extractors").each_with_index do |p, index|
-    unless [0,1].include? index
-      require "./semantic_extraction/extractors/" + p.sub(".rb", "")
-    end
-  end
+  # Screw it. Hard-code time!
+  require 'semantic_extraction/extractors/yahoo'
+  require 'semantic_extraction/extractors/alchemy'
   
   # Thrown when you're lacking an api key for the particular api you're using.
   class MissingApiKey < StandardError; end
