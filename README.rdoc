@@ -1,6 +1,26 @@
 = semantic_extraction
 
-Description goes here.
+Extract meaningful information from unstructured text with Ruby.
+
+Using a variety of APIs (Yahoo Term Extractor and Alchemy are currently supported), semantic_extraction can automatically return a collection of keywords for an arbitrary block of text. If you use Alchemy, it can also return named entities.
+
+== The APIs in use
+
+* [Yahoo Term Extractor](http://developer.yahoo.com/search/content/V1/termExtraction.html)
+
+* [Alchemy API](http://www.alchemyapi.com/api/)
+
+== Upcoming To-Dos
+
+* Add support for [OpenCalais](http://www.opencalais.com/documentation/opencalais-documentation)
+
+* Flesh out the rest of the Alchemy API
+
+* Make it possible to dynamically pick with API to use (so its possible to use multiple APIs in the same app)
+
+* Make it less fugly.
+
+* Tests, tests and more tests.
 
 == Note on Patches/Pull Requests
  

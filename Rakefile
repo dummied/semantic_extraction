@@ -5,13 +5,15 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "semantic_extraction"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "chris@followindy.com"
+    gem.summary = %Q{Extract meaningful information from unstructured text with Ruby}
+    gem.description = %Q{Using a variety of APIs (Yahoo term Extractor and Alchemy are currently supported), semantic_extraction can automatically return a collection of keywords for an arbitrary block of text. If using Alchemy, it can also return named entities.}
+    gem.email = "chris@chrisvannoy.com"
     gem.homepage = "http://github.com/dummied/semantic_extraction"
     gem.authors = ["Chris Vannoy"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency "ruby_tubesday"
+    gem.add_dependency "nokogiri"
+    gem.add_dependency "extlib"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
