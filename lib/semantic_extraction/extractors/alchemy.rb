@@ -46,7 +46,7 @@ module SemanticExtraction
       prefix = is_url?(text) ? "url" : "html"
       endpoint = (prefix == "url" ? "URL" : "HTML") + "GetText"
       url = STARTER + prefix + "/" + endpoint
-      raw = post(url, text, prefix)
+      raw = post(url, text, prefix)      
       output_text(raw)
     end
     

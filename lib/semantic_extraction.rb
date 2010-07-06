@@ -6,15 +6,18 @@ require 'active_support/core_ext/module/attribute_accessors'
 
 module SemanticExtraction
   
-  # By default, we assume you want to use Alchemy.
-  # To override, just set SemanticExtraction.preferred_extractor somewhere and define the appropriate api_key.
+
   mattr_accessor :preferred_extractor
   mattr_accessor :alchemy_api_key
   mattr_accessor :yahoo_api_key
   mattr_accessor :valid_extractors
+  mattr_accessor :requires_api_key
   
   self.valid_extractors = ["yahoo", "alchemy"]
+  self.requires_api_key = ["yahoo", "alchemy"]
   
+  # By default, we assume you want to use Alchemy.
+  # To override, just set SemanticExtraction.preferred_extractor somewhere and define the appropriate api_key.
   def self.preferred_extractor=(value)
     if self.valid_extractors.include?(value)
       @@preferred_extractor = value
@@ -57,8 +60,12 @@ module SemanticExtraction
   
   
   def self.is_valid?(method)
-    @@klass = SemanticExtraction.const_get(self.preferred_extractor.capitalize)
-    (@@klass.respond_to?(method) && defined?(self.send((preferred_extractor + "_api_key").to_sym))) ? true : false
+    @@klass = SemanticExtraction.const_get(self.preferred_extractor.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase })
+    if self.requires_api_key.include? self.preferred_extractor
+      (@@klass.respond_to?(method) && defined?(self.send((preferred_extractor + "_api_key").to_sym)) && !(self.send((preferred_extractor + "_api_key").to_sym)).empty?) ? true : false
+    else
+      @@klass.respond_to?(method)
+    end
   end
   
 end

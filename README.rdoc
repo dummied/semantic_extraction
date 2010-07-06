@@ -4,21 +4,25 @@ Extract meaningful information from unstructured text with Ruby.
 
 Using a variety of APIs (Yahoo Term Extractor and Alchemy are currently supported), semantic_extraction can automatically return a collection of keywords for an arbitrary block of text. If you use Alchemy, it can also return named entities.
 
+A brief walkthrough:
+
+  $ require 'rubygems'
+  $ require 'semantic_extraction'
+  $ SemanticExtraction.alchemy_api_key = 'YOUR_API_KEY_HERE'
+  $ SemanticExtraction.find_keywords("http://chrisvannoy.com/2010/03/10/introducing_semantic_extraction/")
+  $ ["Knight News Challenge", "Yahoo Term Extractor", "obscure gem", "soon-to-be twitter employee", "handle serving gems", "API providers", "Alchemy API", "unstructured text", "earliest steps", "Rails 3-compatible version", "structured data", "early stage", "death threats", "github", "final aside", "awesome piece", "default choice", "HTTP communication", "Indianapolis Star", "Feel free"]
+
 == The APIs in use
 
-* [Yahoo Term Extractor](http://developer.yahoo.com/search/content/V1/termExtraction.html)
+* {Yahoo Term Extractor}[http://developer.yahoo.com/search/content/V1/termExtraction.html]
 
-* [Alchemy API](http://www.alchemyapi.com/api/)
+* {Alchemy API}[http://www.alchemyapi.com/api/]
 
 == Upcoming To-Dos
 
-* Add support for [OpenCalais](http://www.opencalais.com/documentation/opencalais-documentation)
+* Add support for {OpenCalais}[http://www.opencalais.com/documentation/opencalais-documentation]
 
 * Flesh out the rest of the Alchemy API
-
-* Make it possible to dynamically pick with API to use (so its possible to use multiple APIs in the same app)
-
-* Make it less fugly.
 
 * Tests, tests and more tests.
 

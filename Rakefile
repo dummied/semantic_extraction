@@ -10,7 +10,8 @@ begin
     gem.email = "chris@chrisvannoy.com"
     gem.homepage = "http://github.com/dummied/semantic_extraction"
     gem.authors = ["Chris Vannoy"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "shoulda", ">= 0"
+    gem.add_development_dependency "fakeweb"
     gem.add_dependency "ruby_tubesday"
     gem.add_dependency "nokogiri"
     gem.add_dependency "extlib"
