@@ -2,19 +2,17 @@ require 'ruby_tubesday'
 require 'nokogiri'
 require 'extlib'
 require 'ostruct'
-require 'active_support/core_ext/module/attribute_accessors'
+require 'active_support/core_ext/module/attr_accessor_with_default'
 
 module SemanticExtraction
   
-
-  mattr_accessor :preferred_extractor
-  mattr_accessor :alchemy_api_key
-  mattr_accessor :yahoo_api_key
-  mattr_accessor :valid_extractors
-  mattr_accessor :requires_api_key
-  
-  self.valid_extractors = ["yahoo", "alchemy"]
-  self.requires_api_key = ["yahoo", "alchemy"]
+  class << self
+    attr_accessor_with_default :preferred_extractor, "alchemy"
+    attr_accessor_with_default :alchemy_api_key, ""
+    attr_accessor_with_default :yahoo_api_key, ""
+    attr_accessor_with_default :valid_extractors, ["yahoo", "alchemy"]
+    attr_accessor_with_default :requires_api_key, ["yahoo", "alchemy"]
+  end
   
   # By default, we assume you want to use Alchemy.
   # To override, just set SemanticExtraction.preferred_extractor somewhere and define the appropriate api_key.
@@ -24,10 +22,7 @@ module SemanticExtraction
     else
       raise NotSupportedExtractor
     end
-  end
-  
-  self.preferred_extractor = "alchemy" if self.preferred_extractor.blank?
-  
+  end  
   
   # Screw it. Hard-code time!
   require 'semantic_extraction/utility_methods'
