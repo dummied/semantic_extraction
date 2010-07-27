@@ -1,6 +1,5 @@
 require 'ruby_tubesday'
 require 'nokogiri'
-require 'extlib'
 require 'ostruct'
 
 module SemanticExtraction
